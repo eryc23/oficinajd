@@ -25,23 +25,23 @@ app.get('/', (req, res) => {
 })
 
 app.post('/message', async (req, res) => {
-    const {name, message} = req.body;
+    const {username, message} = req.body;
 
-    if(!name && !message) return res.json({message: "dont send message", status: 400});
+    if(!username && !message) return res.json({message: "dont send message", status: 400});
 
-    PrismaPostRepository.create({name, message});
+    PrismaPostRepository.create({username, message});
   
     res.json({message: "success on send message", status: 200});
 })
 
 app.post('/login', (req, res) => {
-    const {name} = req.body;
+    const {username} = req.body;
     
-    if(!name) return res.json({message: "fail on login", status: 401});
+    if(!username) return res.json({message: "fail on login", status: 401});
 
     res.json({
-        name,
-        avatar: `https://avatars.dicebear.com/api/bottts/${name}.svg`,
+        username,
+        avatar: encodeURI(`https://avatars.dicebear.com/api/bottts/${username}.png`),
         message: "success on login",
         status: 200,
     })
