@@ -5,19 +5,23 @@ import {Server} from "socket.io";
 import PrismaPostRepository from './adapters/prisma-post-repository';
 
 const app = express();
-const httpServer = createServer(app);
-const io = new Server(httpServer, {
-        maxHttpBufferSize: 1e9,
-        cors: {
-            origin: '*',
-            methods: ['GET', 'POST'],
-            credentials: true
-        }
+const server = createServer(app);
+const io = new Server(server, {
+    maxHttpBufferSize: 1e9,
+    cors: {
+        origin: '*',
+        methods: ['GET', 'POST'],
+        credentials: true
+    }
+});
+
+io.on("connection", (socket) => {
+    console.log('new client connect', socket.id);
 });
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
     res.json({
         message: 'hello world',
         status: 200
@@ -30,25 +34,36 @@ app.post('/message', async (req, res) => {
     if(!username && !message) return res.json({message: "dont send message", status: 400});
 
     PrismaPostRepository.create({username, message});
-  
+    io.emit('message', {
+        username,
+        avatar: encodeURI(`https://avatars.dicebear.com/api/bottts/${username}.png`),
+        message,
+        createdAt: new Date().toISOString()
+    });
+
     res.json({message: "success on send message", status: 200});
 })
 
-app.post('/login', (req, res) => {
+app.post('/login', async (req, res) => {
     const {username} = req.body;
     
     if(!username) return res.json({message: "fail on login", status: 401});
 
+    let history = await PrismaPostRepository.get();
+
+    history.map(e => {
+        e.avatar = encodeURI(`https://avatars.dicebear.com/api/bottts/${e.username}.png`)
+    })
+
+    history.sort((a,b) => a.createdAt - b.createdAt );
+
     res.json({
         username,
         avatar: encodeURI(`https://avatars.dicebear.com/api/bottts/${username}.png`),
+        history,
         message: "success on login",
         status: 200,
     })
 })
 
-io.on("connection", (socket) => {
-    console.log('new client connect '+socket.id);
-})
-
-app.listen(3000, () => 'Running server on port 3000')
+server.listen(3000, () => 'Running server on port 3000')
