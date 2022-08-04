@@ -75,4 +75,4 @@ app.post('/login', async (req, res) => {
     })
 })
 
-server.listen(3000, () => 'Running server on port 3000')
+server.listen(80, () => 'Running server on port 3000')
