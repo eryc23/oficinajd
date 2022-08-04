@@ -51,11 +51,20 @@ app.post('/login', async (req, res) => {
 
     let history = await PrismaPostRepository.get();
 
-    history.map(e => {
+    interface propsHistory{
+        id: String,
+        username: String,
+        message: String,
+        createdAt: Date,
+        updatedAt: Date,
+        avatar?: String
+    }
+
+    history.map((e: propsHistory) => {
         e.avatar = encodeURI(`https://avatars.dicebear.com/api/bottts/${e.username}.png`)
     })
 
-    history.sort((a,b) => a.createdAt - b.createdAt );
+    history.sort((a,b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
 
     res.json({
         username,
