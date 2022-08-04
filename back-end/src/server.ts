@@ -1,6 +1,6 @@
 import express from "express";
 import cors from 'cors';
-import {createServer} from 'https';
+import {createServer} from 'http';
 
 import { routes } from './routes';
 import socket from './socket';
