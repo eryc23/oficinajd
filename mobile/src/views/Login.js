@@ -1,10 +1,10 @@
 import React from "react";
-import {View, ImageBackground, Text, TextInput, TouchableOpacity} from "react-native";
-import styles from "../styles/styles";
+import {View, ImageBackground, Text, TextInput, TouchableOpacity, ActivityIndicator} from "react-native";
+import styles from "../styles/login";
 
 const image = require('./../assets/bg_login.png');
 
-const Login = ({handleSubmit, setUsername}) => (
+const Login = ({handleSubmit, setUsername, isLoading}) => (
     <ImageBackground source={image} resizeMode='cover' style={styles.image}>
       <View style={styles.boxLogin}>
         <Text style={styles.title}>Realizar acesso</Text>
@@ -12,8 +12,11 @@ const Login = ({handleSubmit, setUsername}) => (
           <Text style={styles.label}>Nome do usuário</Text>
           <TextInput style={styles.input} placeholder="Informe seu nome..." onChangeText={e => setUsername(e)}/>
         </View>
-        <TouchableOpacity style={styles.btnAccess} onPress={handleSubmit}>
-          <Text style={styles.textBtn}>Acessar</Text>
+        <TouchableOpacity style={styles.btnAccess} onPress={handleSubmit} disabled={isLoading}>
+          {isLoading ? 
+            <ActivityIndicator color={'#fff'} /> :
+            <Text style={styles.textBtn}>Acessar</Text>
+          }
         </TouchableOpacity>
       </View>
     </ImageBackground>

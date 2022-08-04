@@ -1,0 +1,1 @@
+export const url = "https://oficinajd-production.up.railway.app/";
