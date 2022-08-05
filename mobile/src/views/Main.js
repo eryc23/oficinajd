@@ -50,7 +50,7 @@ const Main = ({profile, setProfile}) => {
                     </View>
                     <View>
                         <Text style={styles.title}> {profile.username} </Text>
-                        <Text> online </Text>
+                        <Text style={{color: "#555"}}> online </Text>
                     </View>
                 </View>
                 <TouchableOpacity onPress={() => setProfile()}>
@@ -78,7 +78,7 @@ const Main = ({profile, setProfile}) => {
                                 </View>
                                 <View style={{...styles.ballon, backgroundColor: '#f7fbff'}}>
                                     <Text style={styles.nameStyle}>{data.username}</Text>
-                                    <Text> {data.message} </Text>
+                                    <Text style={{color: '#333'}}> {data.message} </Text>
                                     <Text style={styles.dateStyle}>{new Date(data.createdAt).toLocaleString()}</Text>
                                 </View>
                             </View>
@@ -87,7 +87,7 @@ const Main = ({profile, setProfile}) => {
             </View>
 
             <View style={styles.footer}>
-                <TextInput style={{width: '80%'}} placeholder="Fale alguma coisa..." value={message} onChangeText={e => setMessage(e)}/>
+                <TextInput style={{width: '80%', color: '#333'}} placeholder="Fale alguma coisa..." placeholderTextColor="#778" value={message} onChangeText={e => setMessage(e)}/>
                 <TouchableOpacity style={styles.btnSend} onPress={sendMessage}>
                     <PaperPlaneRight color='#f79789' weight="fill" />
                 </TouchableOpacity>

@@ -79,13 +79,15 @@ const styles = StyleSheet.create({
     nameStyle: {
         fontWeight: '800',
         fontSize: 13,
-        marginRight: 20
+        marginRight: 20,
+        color: '#667'
     },
     dateStyle: {
         fontSize: 10,
         textAlign: 'right',
         alignSelf: 'flex-end',
-        marginTop: 15
+        marginTop: 15,
+        color: '#667'
     }
 })
 

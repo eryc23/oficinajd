@@ -33,7 +33,8 @@ const styles = StyleSheet.create({
         textAlign: "center",
     },
     label: {
-        fontWeight: '800'
+        fontWeight: '800',
+        color: "#555"
     },
     inputLogin: {
         marginTop: 40,
@@ -44,7 +45,8 @@ const styles = StyleSheet.create({
         borderWidth: .6,
         marginVertical: 5,
         padding: 5,
-        borderRadius: 4
+        borderRadius: 4,
+        color: "#222",
     },
     btnAccess:{
         backgroundColor: '#FB745A',

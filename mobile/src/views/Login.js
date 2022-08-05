@@ -10,7 +10,7 @@ const Login = ({handleSubmit, setUsername, isLoading}) => (
         <Text style={styles.title}>Realizar acesso</Text>
         <View style={styles.inputLogin}>
           <Text style={styles.label}>Nome do usuário</Text>
-          <TextInput style={styles.input} placeholder="Informe seu nome..." onChangeText={e => setUsername(e)}/>
+          <TextInput style={styles.input} placeholderTextColor="#778" placeholder="Informe seu nome..." onChangeText={e => setUsername(e)}/>
         </View>
         <TouchableOpacity style={styles.btnAccess} onPress={handleSubmit} disabled={isLoading}>
           {isLoading ? 
