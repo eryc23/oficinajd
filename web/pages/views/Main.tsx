@@ -23,7 +23,7 @@ interface propsMain{
 
 const Main = ({profile, setProfile}: propsMain) => {
     const [message, setMessage] = useState<string>('');
-    const [history, setHistory] = useState<Array<propsHistory>>(profile.history);
+    const [history, setHistory] = useState<Array<propsHistory>>(profile?.history);
 
     const messagesEnd = useRef<HTMLDivElement>(null);
 
@@ -32,7 +32,7 @@ const Main = ({profile, setProfile}: propsMain) => {
 
         if(message){
             api.post('/message', {
-                username: profile.username,
+                username: profile?.username,
                 message
             })
 
@@ -61,9 +61,9 @@ const Main = ({profile, setProfile}: propsMain) => {
         <div className="w-full z-20 h-screen flex flex-col justify-between overflow-hidden">
             <div className="bg-white w-full flex p-2 py-4 items-center justify-between">
                 <div className="flex items-center">
-                    <img src={profile.avatar} className='w-14 mr-4 rounded-full bg-white shadow-md border-gray-100 p-1' />
+                    <img src={profile?.avatar} className='w-14 mr-4 rounded-full bg-white shadow-md border-gray-100 p-1' />
                     <div>
-                        <span className="font-bold capitalize">{profile.username}</span>
+                        <span className="font-bold capitalize">{profile?.username}</span>
                         <br/>
                         <span className='text-slate-500'>Online</span>
                     </div>
@@ -72,28 +72,28 @@ const Main = ({profile, setProfile}: propsMain) => {
             </div>
 
             <div className="h-full w-full overflow-y-auto p-2">
-                {history.map((history, index) => (
-                    history.username != profile.username ? (
+                {history?.map((history, index) => (
+                    history?.username != profile?.username ? (
                         <div className='my-2 flex items-center' key={index}>
                             <img src={history.avatar} className='w-14 mr-4 rounded-full bg-white shadow-md border-gray-100 p-1' />
                             <div className='bg-white text-slate-800 p-3 md:max-w-lg max-w-xs rounded-md shadow-md min-w-[200px]'>
-                                <p className='font-bold'>{history.username}</p>
-                                {history.message}
+                                <p className='font-bold'>{history?.username}</p>
+                                {history?.message}
                                 <p className='text-end text-[.6rem] pt-1'>
-                                    {new Date(history.createdAt).toLocaleString()}
+                                    {new Date(history?.createdAt).toLocaleString()}
                                 </p>
                             </div>
                         </div>
                     ) : (
                         <div className='my-2 flex justify-end items-center' key={index}>
                             <div className='bg-[#fd9283] text-slate-50 p-3 md:max-w-lg max-w-xs rounded-md shadow-md min-w-[200px]'>
-                                <p className='font-bold'>{history.username}</p>
-                                {history.message}
+                                <p className='font-bold'>{history?.username}</p>
+                                {history?.message}
                                 <p className='text-end text-[.6rem] pt-1'>
-                                    {new Date(history.createdAt).toLocaleString()}
+                                    {new Date(history?.createdAt).toLocaleString()}
                                 </p>
                             </div>
-                            <img src={history.avatar} className='w-14 ml-4 rounded-full bg-white shadow-md border-gray-100 p-1' />
+                            <img src={history?.avatar} className='w-14 ml-4 rounded-full bg-white shadow-md border-gray-100 p-1' />
                         </div>
                     )
                 ))}
