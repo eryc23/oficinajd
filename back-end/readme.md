@@ -16,7 +16,7 @@ As seguintes tecnologias foram utilizadas para desenvolver servidor/back-end:
 | [prisma](https://www.prisma.io/docs/concepts/components/prisma-client) | 4.1.1 | Utilizado para gerir conexão e gerenciamento do banco de dados |
 | [Cors](https://github.com/expressjs/cors) | 2.8.5 | Usado como middleware para  gerir e liberar requisições externas. |
 | [Express](https://expressjs.com/pt-br/) | 4.18.1 | Usado para criar servidor com rotas que possam ser acessiveis a partir de link |
-| [socket.io](https://socket.io/) | 4.5.1 | Usado para conexão real-time com servidor/cliente, atualmente direciona atividades com base em usuários ativos, também gerindo chats, reportes e atividades online |
+| [socket.io](https://socket.io/) | 4.5.1 | Usado para conexão real-time com servidor/cliente, atualmente criando eventos de envio das mensanges. |
 
 
 ## Variáveis de Ambiente
@@ -76,3 +76,6 @@ npm run start
   status: 200
 }
 ```
+
+
+:link: [Acesse servidor hospedado na railway](https://oficinajd-production.up.railway.app/)
