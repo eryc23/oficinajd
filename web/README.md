@@ -1,34 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Aplicativo Web
 
-## Getting Started
+Aplicativo de mensagem compartilhada criado com NextJS, utilizando as bibliotecas socket.io, axios e tailwindcss, que permite comunicação em tempo real.
 
-First, run the development server:
+## Tecnologias
 
-```bash
-npm run dev
-# or
-yarn dev
+##### Linguagem/Interpretador
+
+* [Node.js v16.17.0](https://nodejs.org/pt-br/)
+* [ReactJS v18.0.0](https://pt-br.reactjs.org/)
+* [NextJS v12.2.4](https://nextjs.org/)
+
+##### Bibliotecas/Módulos
+As seguintes tecnologias foram utilizadas para desenvolver aplicativo:
+#
+| Biblioteca | Versão | Usabilidade |
+| ------ | -------- | ------------ |
+| [Axios](https://axios-http.com/docs/api_intro) | 0.27.2 | Utilizado para fazer requisições da API disponibilizada pelo back-end |
+| [Socket.io Client](https://socket.io/) | 4.5.1 | Biblioteca utilizada para realizar comunicação com servidor back-end, utilizando socket, para receber atualizações das mensagens. |
+| [Phosphor Icons React](https://www.npmjs.com/package/phosphor-react) | 1.4.1 | Usado para criar icones dentro da aplicação |
+
+## Variáveis de Ambiente
+A instação possui algumas variáveis de ambiente que deve ser instanciadas.
+```ini
+NEXT_PUBLIC_API_URL='link do servidor back-end'
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Instalação
+Após preparar o ambiente, realize clone do repositorio, instale as dependências para iniciar aplicação web
+```sh
+git clone https://github.com/eryc23/oficinajd.git
+cd oficinajd/web
+npm install
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+//execute para ambiente de desenvolvimento
+npm run dev
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+//execute para ambiente de produção
+npm run build
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+:link: [Acesse o aplicativo hospedado na vercel](https://oficinajd.vercel.app/)
