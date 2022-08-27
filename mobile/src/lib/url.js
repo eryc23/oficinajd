@@ -1,1 +1,1 @@
-export const url = "https://oficinajd-production.up.railway.app/";
+export const url = "https://servidor-oficinajd.herokuapp.com/";
