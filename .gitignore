@@ -100,3 +100,4 @@ buck-out/
 
 # IGNORE TEMPORARY FILES
 utils/instanceSocket/
+.vercel
