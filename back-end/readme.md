@@ -78,4 +78,4 @@ npm run start
 ```
 
 
-:link: [Acesse servidor hospedado na railway](https://oficinajd-production.up.railway.app/)
+:link: [Acesse servidor hospedado na railway](https://servidor-oficinajd.herokuapp.com/)
