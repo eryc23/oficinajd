@@ -1,7 +1,8 @@
-import { StyleSheet } from "react-native";
+/* eslint-disable prettier/prettier */
+import { StyleSheet } from 'react-native';
 
 const shadowStyle = {
-  shadowColor: "#000",
+  shadowColor: '#000',
   shadowOffset: {
     width: 0,
     height: 1,
@@ -15,26 +16,26 @@ const shadowStyle = {
 const styles = StyleSheet.create({
     image: {
       flex: 1,
-      justifyContent: "center",
+      justifyContent: 'center',
       alignItems: 'center'
     },
     boxLogin: {
         ...shadowStyle,
-        backgroundColor: "#fff",
+        backgroundColor: '#fff',
         width: '90%',
         padding: 10,
         borderRadius: 8,
         paddingVertical: 50,
     },
     title: {
-        color: "#667",
+        color: '#667',
         fontSize: 25,
-        fontWeight: "bold",
-        textAlign: "center",
+        fontWeight: 'bold',
+        textAlign: 'center',
     },
     label: {
         fontWeight: '800',
-        color: "#555"
+        color: '#555'
     },
     inputLogin: {
         marginTop: 40,
@@ -42,11 +43,11 @@ const styles = StyleSheet.create({
     },
     input: {
         borderColor: '#ddd',
-        borderWidth: .6,
+        borderWidth: 1,
         marginVertical: 5,
         padding: 5,
         borderRadius: 4,
-        color: "#222",
+        color: '#222',
     },
     btnAccess:{
         backgroundColor: '#FB745A',
@@ -61,8 +62,13 @@ const styles = StyleSheet.create({
     textBtn: {
         color: '#fff',
         fontWeight: '800',
-        fontSize: 16
-    }
+        fontSize: 16,
+    },
+    textValidation: {
+        color: '#fb745a',
+        fontSize: 12,
+        textAlign: 'right',
+    },
 })
 
 export default styles;
