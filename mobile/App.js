@@ -1,48 +1,67 @@
-import React, { useState } from "react";
-import { View } from "react-native";
+/* eslint-disable prettier/prettier */
+import React, { useState } from 'react';
+import { View } from 'react-native';
+import Login from './src/views/Login';
+import Main from './src/views/Main';
+import { api, showError } from './src/lib/api';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
-import Login from "./src/views/Login";
-import Main from "./src/views/Main";
-import {api} from './src/lib/api';
+
+const schema = yup.object({
+  username: yup.string().required('Nome é obrigatório'),
+});
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [username, setUsername] = useState('');
   const [profile, setProfile] = useState();
 
-  const handleSubmit = async () => {
+  const { control, handleSubmit, formState: { errors }} = useForm({
+    resolver: yupResolver(schema),
+  });
+
+
+  const handleLogin = async (data) => {
     setIsLoading(true);
-
+    const nome = data.username;
     api.post('/login', {
-      username
-    }).then(e => {
-      if(e.data.status == 200){
+      username: nome,
+    }).then(response => {
+      if (response.data.status == 200){
         setProfile({
-          username: e.data.username,
-          avatar: e.data.avatar,
-          history: e.data.history
-        })
+          username: response.data.username,
+          avatar: response.data.avatar,
+          history: response.data.history,
+        });
       }
-
+      console.log(data);
+      console.log(response.data);
       setIsLoading(false);
-    }).catch(err => setIsLoading(false))
-  }
+    }).catch(err => {
+      setIsLoading(false);
+      showError(err);
+      });
+
+  };
 
   return (
     <View style={{flex: 1}}>
-      {profile ? 
-        <Main 
-          profile={profile} 
+      {profile ?
+        <Main
+          profile={profile}
           setProfile={setProfile}
         /> :
-        <Login 
-          handleSubmit={handleSubmit} 
-          setUsername={setUsername} 
+        <Login
+          handleLogin={handleLogin}
+          handleSubmit={handleSubmit}
+          control={control}
+          errors={errors}
           isLoading={isLoading}
         />
       }
     </View>
-  )
-}
+  );
+};
 
 export default App;
